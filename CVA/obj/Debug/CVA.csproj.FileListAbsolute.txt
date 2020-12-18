@@ -1,0 +1,12 @@
+D:\Windows Utilities\CVA\obj\Debug\CVA.csprojAssemblyReference.cache
+D:\Windows Utilities\CVA\obj\Debug\CVA.csproj.CoreCompileInputs.cache
+D:\Windows Utilities\CVA\bin\Debug\CVA.exe
+D:\Windows Utilities\CVA\bin\Debug\CVA.pdb
+D:\Windows Utilities\CVA\obj\Debug\CVA.exe
+D:\Windows Utilities\CVA\obj\Debug\CVA.pdb
+D:\Windows Apps\CVA\bin\Debug\CVA.exe
+D:\Windows Apps\CVA\bin\Debug\CVA.pdb
+D:\Windows Apps\CVA\obj\Debug\CVA.csprojAssemblyReference.cache
+D:\Windows Apps\CVA\obj\Debug\CVA.csproj.CoreCompileInputs.cache
+D:\Windows Apps\CVA\obj\Debug\CVA.exe
+D:\Windows Apps\CVA\obj\Debug\CVA.pdb

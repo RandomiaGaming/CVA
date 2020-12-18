@@ -1,0 +1,7 @@
+EpsilonEngine/bin/
+EpsilonEngine/obj/
+.git/
+.vs/
+*.user
+*.suo
+packages/

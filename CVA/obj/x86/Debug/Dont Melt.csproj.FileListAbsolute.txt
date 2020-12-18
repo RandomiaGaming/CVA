@@ -1,0 +1,9 @@
+D:\Windows Apps\Epsilon\EpsilonCore\bin\Debug\DontMelt.exe.config
+D:\Windows Apps\Epsilon\EpsilonCore\bin\Debug\DontMelt.exe
+D:\Windows Apps\Epsilon\EpsilonCore\bin\Debug\DontMelt.pdb
+D:\Windows Apps\Epsilon\EpsilonCore\bin\Debug\MonoGame.Framework.dll
+D:\Windows Apps\Epsilon\EpsilonCore\bin\Debug\MonoGame.Framework.xml
+D:\Windows Apps\Epsilon\EpsilonCore\obj\x86\Debug\Dont Melt.csproj.CoreCompileInputs.cache
+D:\Windows Apps\Epsilon\EpsilonCore\obj\x86\Debug\Dont Melt.csproj.CopyComplete
+D:\Windows Apps\Epsilon\EpsilonCore\obj\x86\Debug\DontMelt.exe
+D:\Windows Apps\Epsilon\EpsilonCore\obj\x86\Debug\DontMelt.pdb

@@ -1,0 +1,11 @@
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\obj\x86\Debug\DontMelt.csprojAssemblyReference.cache
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\obj\x86\Debug\DontMelt.csproj.CoreCompileInputs.cache
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\obj\x86\Debug\DontMelt.exe
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\obj\x86\Debug\DontMelt.pdb
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\DontMelt.exe.config
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\DontMelt.exe
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\DontMelt.pdb
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\MonoGame.Framework.xml
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\obj\x86\Debug\DontMelt.csproj.CopyComplete
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\Newtonsoft.Json.dll
+D:\Windows Apps\Don't Melt! - GIT\Don't Melt!\bin\Debug\Newtonsoft.Json.xml
