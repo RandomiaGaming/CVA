@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Drawing;
 using Accord.Video.FFMPEG;
 using cva = CVA.Static;

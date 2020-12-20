@@ -1,6 +1,6 @@
 ﻿namespace CVA.Static
 {
-    public sealed class Tri : Shape
+    public sealed class Triangle : Shape
     {
         public Vector corner1 = new Vector(0, 0);
         public Vector corner2 = new Vector(1, 0);

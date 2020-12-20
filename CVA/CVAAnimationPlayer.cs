@@ -6,10 +6,9 @@ using cva = CVA.Static;
 
 public class CVAAnimationGame : Game
 {
-    private Texture2D frame;
-    private Color[] frameColors;
     private SpriteBatch spriteBatch;
-    private cva.Renderer renderer;
+    private readonly cva.Renderer renderer;
+    private double animationProgress = 0;
     public CVAAnimationGame()
     {
         _ = new GraphicsDeviceManager(this)
@@ -24,41 +23,51 @@ public class CVAAnimationGame : Game
         IsFixedTimeStep = false;
         TargetElapsedTime = new TimeSpan(10000000 / 60);
 
-        cva.Scene scene = new cva.Scene();
-        scene.viewPortHeight = 1;
-        scene.viewPortWidth = 1;
-        scene.viewPortPositionX = 0;
-        scene.viewPortPositionY = 0;
-        scene.backgroundShader = new cva.ConstantShaderRGB(new cva.ColorRGB(0, 0, 0));
+        cva.Scene scene = new cva.Scene
+        {
+            viewPortHeight = 1,
+            viewPortWidth = 1,
+            viewPortPositionX = 0,
+            viewPortPositionY = 0,
+            backgroundShader = new cva.ConstantShaderRGB(new cva.ColorRGB(0, 0, 0))
+        };
 
-        cva.Object obj1 = new cva.Object();
-        obj1.position = new cva.Vector(-0.5, -0.5);
-        obj1.negativeShapes = new List<cva.Shape>();
-        obj1.shapes.Add(new cva.Rectangle());
-        obj1.objectShader = new cva.ConstantShaderRGBA(new cva.ColorRGBA(1, 1, 1, 0.5));
+        cva.Object topCheek = new cva.Object
+        {
+            position = new cva.Vector(0.5, 0.5),
+            scale = new cva.Vector(-1, 1),
+            negativeShapes = new List<cva.Shape>(),
+            objectShader = new cva.ConstantShaderRGBA(new cva.ColorRGBA(1, 1, 1))
+        };
+        topCheek.shapes.Add(new cva.Curve());
 
-        cva.Object obj2 = new cva.Object();
-        obj2.position = new cva.Vector(-1, -0.5);
-        obj2.negativeShapes = new List<cva.Shape>();
-        obj2.shapes.Add(new cva.Circle());
-        obj2.objectShader = new cva.ConstantShaderRGBA(new cva.ColorRGBA(1, 0, 0, 1));
+        cva.Object bottomCheek = new cva.Object
+        {
+            position = new cva.Vector(0.5, 0.5),
+            scale = new cva.Vector(-1, -1),
+            negativeShapes = new List<cva.Shape>(),
+            objectShader = new cva.ConstantShaderRGBA(new cva.ColorRGBA(1, 1, 1))
+        };
+        bottomCheek.shapes.Add(new cva.Curve());
 
-        scene.objects.Add(obj2);
-        scene.objects.Add(obj1);
+        scene.objects.Add(topCheek);
+        scene.objects.Add(bottomCheek);
 
-        renderer = new cva.Renderer(scene);
-        renderer.renderWidth = 100;
-        renderer.renderHeight = 100;
+        renderer = new cva.Renderer(scene)
+        {
+            renderWidth = 100,
+            renderHeight = 100
+        };
     }
     protected override void Update(GameTime gameTime)
     {
-        renderer.scene.objects[0].rotation += gameTime.ElapsedGameTime.TotalMinutes * 360.0;
-        base.Update(gameTime);
+        animationProgress += gameTime.ElapsedGameTime.TotalSeconds / 10;
+        animationProgress = cva.CVAHelper.LoopClamp(animationProgress, 0, 1);
+
+        ((cva.Curve)renderer.scene.objects[0].shapes[0]).height = animationProgress / 2;
     }
     protected override void Initialize()
     {
-        frame = new Texture2D(GraphicsDevice, 256, 144);
-        frameColors = new Color[256 * 144];
         spriteBatch = new SpriteBatch(GraphicsDevice);
     }
     protected override void Draw(GameTime gameTime)

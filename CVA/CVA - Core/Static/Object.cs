@@ -11,7 +11,7 @@ namespace CVA.Static
         public List<Shape> negativeShapes = new List<Shape>();
         public Vector Transform(Vector original)
         {
-            return CVAHelper.RotateVector((original + position) / scale, rotation);
+            return CVAHelper.RotateVector((original - position) / scale, rotation);
         }
         public bool ContainsPoint(Vector point)
         {
