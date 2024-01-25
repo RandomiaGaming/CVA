@@ -1,7 +1,13 @@
-EpsilonEngine/bin/
-EpsilonEngine/obj/
 .git/
 .vs/
+.idea/
+.vscode/
+bin/
+obj/
+x64/
+x86/
+Debug/
+Release/
+packages/
 *.user
 *.suo
-packages/

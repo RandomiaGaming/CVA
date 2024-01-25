@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-[assembly: AssemblyTitle("CVA")]
-[assembly: AssemblyDescription("Continuom Vectorgraphic Animation")]
+[assembly: AssemblyTitle("CVG - Viewer")]
+[assembly: AssemblyDescription("Continuum Vector Graphic - Viewer")]
 [assembly: AssemblyCompany("RandomiaGaming")]
-[assembly: AssemblyProduct("CVA")]
+[assembly: AssemblyProduct("CVG - Viewer")]
 [assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]

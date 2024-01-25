@@ -1,54 +1,60 @@
 ﻿using System;
-using System.Drawing;
-using Accord.Video.FFMPEG;
-using cva = CVA.Static;
+using System.Diagnostics;
 using System.Collections.Generic;
 
-public static class Program
+namespace CVA
 {
-    [STAThread]
-    static void Main(string[] args)
+    public static class Program
     {
-        CVAAnimationGame game = new CVAAnimationGame();
-        game.Run();
-        game.Dispose();
-        //MakeVideo();
-    }
-    public static void MakeVideo()
-    {
-        cva.Scene scene = new cva.Scene();
-        scene.viewPortHeight = 1;
-        scene.viewPortWidth = 1;
-        scene.viewPortPositionX = 0;
-        scene.viewPortPositionY = 0;
-        scene.backgroundShader = new cva.ConstantShaderRGB(new cva.ColorRGB(0, 0, 0));
-
-        cva.Object obj2 = new cva.Object();
-        obj2.position = new cva.Vector(-0.5, -0.5);
-        obj2.negativeShapes = new List<cva.Shape>();
-        obj2.shapes.Add(new cva.Rectangle());
-        obj2.objectShader = new cva.ConstantShaderRGBA(new cva.ColorRGBA(1, 1, 1));
-
-        scene.objects.Add(obj2);
-
-        cva.Renderer renderer = new cva.Renderer(scene);
-        renderer.renderWidth = 1000;
-        renderer.renderHeight = 1000;
-
-        VideoFileWriter vFWriter = new VideoFileWriter();
-
-        vFWriter.Open(@"D:\TestVideo.mp4", 1000, 1000, 60, VideoCodec.MPEG4);
-
-        for (int i = 0; i < 600; i++)
+        public const int testIterations = 1;
+        public const ushort rastorWidth = 1920;
+        public const ushort rastorHeight = 1080;
+        [STAThread]
+        static void Main()
         {
-            renderer.scene.objects[0].rotation = (i / 600.0) * 360.0;
-            Bitmap frame = renderer.RenderToBitmap();
-            vFWriter.WriteVideoFrame(frame);
-            frame.Dispose();
+            CVA.Graphing.Scene scene = new CVA.Graphing.Scene()
+            {
+                backgroundColor = new CVA.Core.Color(0, 0, 0),
+                graphs = new List<Graphing.Graph>(),
+                viewPortHeight = 1,
+                viewPortWidth = 1,
+                viewPortPositionX = 0,
+                viewPortPositionY = 0
+            };
+
+            CVA.Graphing.TestGraph testGraph = new CVA.Graphing.TestGraph()
+            {
+                color = new CVA.Core.Color(255, 0, 0)
+            };
+
+            scene.graphs.Add(testGraph);
+
+
+
+            List<long> computeTimes = new List<long>();
+
+            Stopwatch stopwatch = new Stopwatch();
+
+            for (int i = 0; i < testIterations; i++)
+            {
+                stopwatch.Reset();
+                stopwatch.Start();
+                _ = CVA.Graphing.Rastorizor.Rastor(scene, rastorWidth, rastorHeight);
+                stopwatch.Stop();
+                computeTimes.Add(stopwatch.ElapsedTicks);
+                Console.WriteLine($"Finished iteration {i + 1} of {testIterations} in {stopwatch.ElapsedTicks} ticks which is {stopwatch.ElapsedTicks / 10000000.0} seconds.");
+            }
+
+            long totalComputeTime = 0;
+            foreach (long computeTime in computeTimes)
+            {
+                totalComputeTime += computeTime;
+            }
+            long averageComputeTime = totalComputeTime / testIterations;
+            Console.WriteLine($"Test finished with an average time of {averageComputeTime} ticks which is {averageComputeTime / 10000000.0} seconds.");
+
+            GraphicViewer graphicViewer = new GraphicViewer(CVA.Graphing.Rastorizor.Rastor(scene, rastorWidth, rastorHeight));
+            graphicViewer.Run();
         }
-
-        vFWriter.Close();
-
-        vFWriter.Dispose();
     }
 }
