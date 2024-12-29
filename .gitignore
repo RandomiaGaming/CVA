@@ -28,3 +28,6 @@ Logs/
 *.filters
 *.user
 *.suo
+
+# Project Name Folder
+CVA/
